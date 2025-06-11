@@ -5,6 +5,18 @@ Tüm <img> etiketlerine mouseenter ve mouseleave eventleri ekleyin.
 - Mouse çıktığında (mouseleave): "grayscale" class'ını kaldırın.
 */
 
+const images = document.querySelectorAll("img");
+
+images.forEach((img) => {
+  img.addEventListener("mouseenter", () => {
+    img.classList.add("grayscale");
+  });
+
+  img.addEventListener("mouseleave", () => {
+    img.classList.remove("grayscale");
+  });
+});
+
 /*
 CHALLENGE 2:
 Sayfa aktifken (herhangi bir yere tıklandığında), klavye dinlemeye başlasın.
@@ -13,6 +25,23 @@ Sayfa aktifken (herhangi bir yere tıklandığında), klavye dinlemeye başlası
 - "Escape" (Esc) tuşuna basılırsa body'deki tüm bu class'lar kaldırılsın
 NOT: Klavye eventlerini document yerine **window** nesnesine ekleyin.
 */
+
+window.addEventListener("keydown", function (e) {
+  const body = document.body;
+
+  if (e.key === "1") {
+    body.classList.remove("theme2", "theme3");
+    body.classList.add("theme1");
+  } else if (e.key === "2") {
+    body.classList.remove("theme1", "theme3");
+    body.classList.add("theme2");
+  } else if (e.key === "3") {
+    body.classList.remove("theme1", "theme2");
+    body.classList.add("theme3");
+  } else if (e.key === "Escape") {
+    body.classList.remove("theme1", "theme2", "theme3");
+  }
+});
 
 /*
 CHALLENGE 3:
