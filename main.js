@@ -51,6 +51,19 @@ CHALLENGE 3:
 - Aksi halde (5 veya daha az karakter) buton "disabled" olmalı
 */
 
+const input = document.querySelector("#full_name");
+const button = document.querySelector("button");
+
+input.addEventListener("input", () => {
+  input.value = input.value.toUpperCase();
+
+  if (input.value.length > 5) {
+    button.disabled = false;
+  } else {
+    button.disabled = true;
+  }
+});
+
 /*
 CHALLENGE 4:
 Form submit edildiğinde (Kaydet butonuna basıldığında):
