@@ -4,19 +4,16 @@ Tüm <img> etiketlerine mouseenter ve mouseleave eventleri ekleyin.
 - Mouse üzerine geldiğinde (mouseenter): ilgili resme "grayscale" class'ı ekleyin.
 - Mouse çıktığında (mouseleave): "grayscale" class'ını kaldırın.
 */
-
 const images = document.querySelectorAll("img");
 
-images.forEach((img) => {
-  img.addEventListener("mouseenter", () => {
-    img.classList.add("grayscale");
+images.forEach(function (image) {
+  image.addEventListener("mouseenter", (e) => {
+    image.classList.add("grayscale");
   });
-
-  img.addEventListener("mouseleave", () => {
-    img.classList.remove("grayscale");
+  image.addEventListener("mouseleave", (e) => {
+    image.classList.remove("grayscale");
   });
 });
-
 /*
 CHALLENGE 2:
 Sayfa aktifken (herhangi bir yere tıklandığında), klavye dinlemeye başlasın.
@@ -26,23 +23,20 @@ Sayfa aktifken (herhangi bir yere tıklandığında), klavye dinlemeye başlası
 NOT: Klavye eventlerini document yerine **window** nesnesine ekleyin.
 */
 
-window.addEventListener("keydown", function (e) {
-  const body = document.body;
-
+window.addEventListener("keydown", (e) => {
   if (e.key === "1") {
-    body.classList.remove("theme2", "theme3");
-    body.classList.add("theme1");
-  } else if (e.key === "2") {
-    body.classList.remove("theme1", "theme3");
-    body.classList.add("theme2");
-  } else if (e.key === "3") {
-    body.classList.remove("theme1", "theme2");
-    body.classList.add("theme3");
-  } else if (e.key === "Escape") {
-    body.classList.remove("theme1", "theme2", "theme3");
+    document.body.classList.add("theme1");
+  }
+  if (e.key === "2") {
+    document.body.classList.add("theme2");
+  }
+  if (e.key === "3") {
+    document.body.classList.add("theme3");
+  }
+  if (e.key === "Escape") {
+    document.body.classList.remove("theme1", "theme2", "theme3");
   }
 });
-
 /*
 CHALLENGE 3:
 <input id="full_name"> alanına yazı yazıldıkça:
@@ -51,19 +45,18 @@ CHALLENGE 3:
 - Aksi halde (5 veya daha az karakter) buton "disabled" olmalı
 */
 
-const input = document.querySelector("#full_name");
-const button = document.querySelector("button");
+const input = document.getElementById("full_name");
+const buton = document.querySelector("button");
 
-input.addEventListener("input", () => {
+input.addEventListener("input", (e) => {
   input.value = input.value.toUpperCase();
 
   if (input.value.length > 5) {
-    button.disabled = false;
+    buton.disabled = false;
   } else {
-    button.disabled = true;
+    buton.disabled = true;
   }
 });
-
 /*
 CHALLENGE 4:
 Form submit edildiğinde (Kaydet butonuna basıldığında):
@@ -72,16 +65,12 @@ Form submit edildiğinde (Kaydet butonuna basıldığında):
 - Input alanını temizleyin
 - <button> tekrar disabled hale gelsin
 */
-const deger = document.querySelector("#full_name");
-const buton = document.querySelector("button");
-const result = document.querySelector("#submitResult");
 
-button.addEventListener("click", () => {
-  const name = deger.value.trim();
+const sonucDegeri = document.getElementById("submitResult");
 
-  if (name.length > 0) {
-    result.textContent = `${name} başarı ile kaydedildi.`;
-    deger.value = "";
-    buton.disabled = true;
-  }
+buton.addEventListener("click", (e) => {
+  e.preventDefault();
+  sonucDegeri.textContent = `${input.value} başarı ile kaydedildi.`;
+  input.value = "";
+  buton.disabled = true;
 });
