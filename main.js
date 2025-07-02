@@ -39,7 +39,7 @@ window.addEventListener("keydown", (e) => {
 });
 /*
 CHALLENGE 3:
-<input id="full_name"> alanına yazı yazıldıkça:
+<input id="full_name"> alanına yazı yazıldıkça: 
 - Girilen metni otomatik olarak BÜYÜK HARFE çevirin
 - Metin 5 karakterden UZUNSA <button> elementini "enabled" yapın
 - Aksi halde (5 veya daha az karakter) buton "disabled" olmalı
